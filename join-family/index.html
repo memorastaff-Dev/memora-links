@@ -1,18 +1,51 @@
-{
-  "applinks": {
-    "details": [
-      {
-        "appIDs": ["FRXQ5UZ88T.com.memorafamily.memora"],
-        "components": [
-          {
-            "/": "/join-family",
-            "?": {
-              "token": "*",
-              "family": "*"
-            }
-          }
-        ]
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Join Family - Memora</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        max-width: 640px;
+        margin: 60px auto;
+        padding: 24px;
+        line-height: 1.5;
       }
-    ]
-  }
-}
+      h1 {
+        margin-bottom: 12px;
+      }
+      p {
+        margin-bottom: 16px;
+      }
+      a.button {
+        display: inline-block;
+        padding: 12px 18px;
+        text-decoration: none;
+        border-radius: 8px;
+        border: 1px solid #ccc;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Join your family on Memora</h1>
+    <p id="subtitle">You’ve been invited to join a family.</p>
+    <a
+      class="button"
+      href="https://apps.apple.com/us/app/memora-family/id6759070272"
+    >
+      Download Memora
+    </a>
+
+    <script>
+      const params = new URLSearchParams(window.location.search);
+      const family = params.get("family");
+
+      if (family) {
+        const decoded = decodeURIComponent(family.replace(/\+/g, " "));
+        document.getElementById("subtitle").textContent =
+          `You’ve been invited to join ${decoded}.`;
+      }
+    </script>
+  </body>
+</html>
